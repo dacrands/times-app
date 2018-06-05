@@ -1,0 +1,260 @@
+/* refactored from: https://css-tricks.com/solved-with-css-dropdown-menus/ */
+
+.menu .menu__dropdown {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+
+.menu 
+.menu__list 
+.menu__list-item:hover > .menu__dropdown,
+.menu .menu__dropdown:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+.menu 
+.menu__list
+.menu__list-item 
+.menu__dropdown 
+.menu__dropdown-item {
+    clear: both;
+    width: 100%;
+}
+
+/* Now this is me */
+
+.menu {
+/*     outline: 4px dashed black; */    
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    display: grid;        
+    grid-template-columns: min-content 1fr;
+    background: var(--primary);    
+}
+
+.menu__logo {
+    /*   outline: 3px solid lime; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--light);
+}
+
+
+
+.menu__list {
+/*   outline: 4px solid salmon; */
+    height: 100%;
+    margin-top: 0;
+    /* position: fixed; */
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--light);
+}
+
+
+.menu__link,
+.menu__list-link,
+.menu__button {
+/*   outline: 2px solid green;   */    
+    height: 100%;
+    padding: 0 10px;    
+    display: flex;
+    align-items: center;    
+    color: var(--light);
+    text-decoration: none;
+    transition: all 200ms linear;  
+}
+
+
+.menu__list .menu__list-link:hover, 
+.menu__logo .menu__link:hover {
+    color: var(--comp);
+    /* color: #ffffff;
+    text-shadow: 0 0 0.05rem #ffffff */
+}
+.menu__logo .menu__link--active,
+.menu__list .menu__link--active {
+    color: var(--comp);
+    /* color: #ffffff;
+    text-shadow: 0 0 0.5px #ffffff */
+}
+
+.menu__list 
+.menu__list-link 
+.menu__link--active:hover {
+    color: var(--comp);
+    /* color: #ffffff;
+    text-shadow: 0 0 0.5px #ffffff */
+}
+
+.menu__button {
+    border: none;
+    background: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.menu__button:focus {
+    outline: none;
+}
+
+.menu__button:hover {
+    cursor: pointer;
+}
+
+
+.menu__dropdown {
+    /*   outline: 3px dashed black; */
+    display: none;  
+    position: absolute;
+    padding: 15px;
+    color: blue;
+/*   margin-top: 20px; */
+    box-shadow: 0 0 2px var(--shadow);
+    background: #ffffff;
+    /* text-align: center; */
+    list-style: none;
+}
+
+.menu__dropdown .menu__list-link {
+    padding: 0;
+    padding-bottom: 9px;
+    color: inherit;
+    border-bottom: .015rem solid var(--primary);
+}
+
+.menu__dropdown .menu__list-link:hover {
+    color: var(--primary);
+}
+
+#dropdownButton:hover > .menu__dropdown{
+    display: flex;
+}
+
+
+
+.menu__dropdown-item {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.menu__dropdown--show {
+    display: block;
+}
+
+.menu__burger {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--comp);
+}
+
+
+.patty {
+    height: .08rem;
+    width: 30px;
+    margin: 5px 0;
+    background: var(--light);
+    transition: all 80ms ease-in;
+    transform-origin: 50%;
+}
+
+.patty--collapse-1 {
+    margin: -.08rem 0;    
+}
+
+.patty--collapse-1:first-of-type {  
+    margin: 0;
+}
+
+.patty--collapse-2 {
+    background: red;
+    transform: rotate(-45deg);
+}
+
+.patty--collapse-2:first-of-type {  
+    transform: rotate(45deg);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    }
+
+    .menu__burger {
+    /*     outline: 2px solid yellow; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    /* padding-right: 15px; */
+    }
+    
+    .menu__burger .menu__button {
+    height: 100%;
+/*     outline: 1px solid red; */
+    display: flex;
+    }
+
+    .menu__list {
+/*     outline: 4px solid red; */
+    display: none;
+    position: fixed;
+    width: inherit;
+    /* height: 100%; */
+    height: initial;
+    top: 45px;
+    right: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    background: var(--primary);
+    /*     transform: translateY(-100%); */
+    }
+    
+    .menu__list--show {
+    display: flex;
+    }
+
+    .menu__list-item {
+/*     outline: 1px solid lime; */
+    display: flex;
+/*     margin: 15px; */
+/*     padding: 20px; */
+    height: min-content;
+    width: 100%;
+    align-content: flex-end;
+    }
+
+    .menu__list-link {
+/*     outline: 5px solid red; */
+    display: flex;
+    justify-items: flex-end;
+    width: 100%;
+    padding: 15px;
+    text-align: right;
+    }
+
+    .menu__dropdown {
+        margin-top: 50px;
+        width: 100%;
+    }
+
+}

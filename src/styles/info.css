@@ -1,0 +1,28 @@
+.info {
+    min-height: 25vh;
+    padding-top: 1vh;
+    display: flex;
+    justify-content: space-around;
+    font-family: "Raleway",sans-serif;
+    text-align: center;
+}
+
+
+
+.info__content {
+    max-width: 400px;
+    margin: 0 10px;
+}
+
+
+@media(max-width:768px) {
+    .info {
+        padding-top: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info__content {
+        margin-bottom: 3rem;
+    }
+}
