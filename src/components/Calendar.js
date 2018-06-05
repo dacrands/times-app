@@ -109,12 +109,12 @@ class MyCalendar extends Component {
                                 <option value="7">8</option>
                                 <option value="8">9</option>
                                 <option value="9">10</option>
-                                <option value=10>11</option>
-                                <option value=11>12</option>
-                                <option value=12>13</option>
-                                <option value=13>14</option>
-                                <option value=14>15</option>
-                                <option value=15>16</option>
+                                <option value="10">11</option>
+                                <option value="11">12</option>
+                                <option value="12">13</option>
+                                <option value="13">14</option>
+                                <option value="14">15</option>
+                                <option value="15">16</option>
                             </select>
                         </label>
                         <label htmlFor="day">
