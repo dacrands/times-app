@@ -31,7 +31,7 @@
 .menu {
 /*     outline: 4px dashed black; */    
     position: fixed;
-    z-index: 2;
+    z-index: 9;
     width: 100%;
     display: grid;        
     grid-template-columns: min-content 1fr;
