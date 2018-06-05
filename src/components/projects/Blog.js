@@ -30,13 +30,6 @@ class Blog extends Component {
             }            
         }
     }
-
-    componentWillMount() {
-        // document.body.style.backgroundColor= "blue"
-        document.querySelectorAll('.box').style.backgroundColor= "blue"
-        // document.body.style.backgroundColor= "blue"
-    }
-
    
     render() {
         return (
