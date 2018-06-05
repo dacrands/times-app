@@ -16,7 +16,7 @@
 5. 404 page
 6. Blog component
 7. Move stateless components to separate dir
-
+8. Add article element to Blog
 
 ## Old NPM Script
 ```json

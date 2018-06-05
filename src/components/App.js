@@ -12,6 +12,7 @@ import Scholars from './Scholars';
 import Contact from './Contact';
 import Benefits from './Benefits';
 import Landing from './landing/Landing';
+import Blog from './projects/Blog';
 
 
 
@@ -23,6 +24,7 @@ const App = () => (
       <Route path="/3sp" component={Scholars} />
       <Route path="/contact" component={Contact} />
       <Route path="/benefits" component={Benefits} />
+      <Route path="/blog" component={Blog} />
       <Footer />
     </div>
   </Router>
