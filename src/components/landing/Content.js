@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FadeIn from 'react-lazyload-fadein';
 
 import Video from '../Video';
 
@@ -13,11 +14,18 @@ class Content extends Component {
             <div>
                 <div className="content">
                     <div className="content__img">
-                        <img
-                            src={uav}
-                            className="img-fluid lazy"
-                            alt="Responsive image"
-                        />
+                        <FadeIn height={500}>
+                            {
+                                onload => (
+                                    <img
+                                        onLoad={onload}
+                                        src={uav}
+                                        className="img-fluid"
+                                        alt="uav"
+                                    />
+                                )
+                            }                              
+                        </FadeIn>                        
                     </div>
                     <div className="content__content">
                         <h2>Running Start Program</h2>
@@ -39,11 +47,19 @@ class Content extends Component {
                 </div>
                 <div className="content">
                     <div className="content__img">
-                        <img
-                            src={groundstation}
-                            className="img-fluid lazy"
-                            alt="Responsive image"
-                        />
+                        <FadeIn height={500}>
+                            {
+                                onload => (
+                                    <img
+                                        onLoad={onload}
+                                        duration={100}
+                                        src={groundstation}
+                                        className="img-fluid"
+                                        alt="groundstation"
+                                    />
+                                )
+                            }                              
+                        </FadeIn>                        
                     </div>
                     <div className="content__content">
                         <h2>3SP</h2>

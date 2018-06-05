@@ -19,7 +19,7 @@ class Landing extends Component {
     }
 
     componentDidMount() {
-        console.log('landing')
+        console.log(this.state.scriptHTML)
         this.setState({ scriptHTML:Trianglify });    
         const script = document.createElement("script");
         script.type = "text/javascript";
