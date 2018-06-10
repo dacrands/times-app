@@ -1,5 +1,5 @@
-# reactpack-boilerplate
-Basic starter app for webpack and react applications. Uses express and react-router-4.
+# reactpack-redux
+Basic starter app for webpack, react, and redux applications. Uses express and react-router-4.
 
 ## npm scripts
 - `npm start`
