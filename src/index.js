@@ -7,6 +7,8 @@ import ReduxPromise from 'redux-promise';
 import App from './components/App';
 import reducers from './reducers';
 
+import './assets/styles/main.css';
+
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Looks like we are in development mode!'); 
