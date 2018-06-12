@@ -4,7 +4,7 @@ const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/his
 const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
 
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.API_KEY || '1e2e8c3de5ee427c835460f4a58a4792';
 
 const historyUrl = `${HISTORY_URL}?api-key=${API_KEY}`;
 const bestUrl = `${BEST_URL}?api-key=${API_KEY}`;
@@ -47,7 +47,7 @@ export function fetchBest() {
 
 
 export function fetchArchives() {
-    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2005)}/9.json`;
+    const ARCHIVES_URL = `http://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2005)}/9.json`;
     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
     return fetch(archivesUrl)
         .then((response) => {

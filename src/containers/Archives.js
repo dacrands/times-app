@@ -23,7 +23,7 @@ class Archives extends Component {
                 <h3>
                     {post.headline.main}
                 </h3>
-                <p className="lead">{post.pub_date}</p>
+                <p className="lead">{new Date(post.pub_date).toDateString()}</p>
                 <p>
                 <img 
                     src={post.multimedia[0] ? `https://nyt.com/${post.multimedia[0].url}` : ""}
