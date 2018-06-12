@@ -18,6 +18,10 @@ function getRandomYear(min, max) {
     return Math.floor(Math.random() * (max-min) + min);
 }
 
+function getRandomMonth() {
+    return Math.floor(Math.random() * (12-1) + 1);
+}
+
 export function fetchHistory() {
     return fetch(historyUrl)
     .then((response) => {
@@ -47,7 +51,7 @@ export function fetchBest() {
 
 
 export function fetchArchives() {
-    const ARCHIVES_URL = `http://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2005)}/9.json`;
+    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2010)}/${getRandomMonth()}.json`;
     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
     return fetch(archivesUrl)
         .then((response) => {
