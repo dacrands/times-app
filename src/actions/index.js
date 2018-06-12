@@ -47,7 +47,7 @@ export function fetchBest() {
 
 
 export function fetchArchives() {
-    const ARCHIVES_URL = `http://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2005)}/9.json`;
+    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2005)}/9.json`;
     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
     return fetch(archivesUrl)
         .then((response) => {
