@@ -7,27 +7,25 @@ class Best extends Component {
     
     componentDidMount() {
         this.props.fetchBest();
-        console.log(this.props.best);         
+        // setTimeout(() => {
+        //     console.log(this.props.best);
+        // }, 3500);         
     }
 
     renderBest(book) {
         return (
         
-            <div className={"book"}>
-                <a href={book.amazon_product_url}>
-                    <img className="book__image" src={book.book_image} alt=""/>
-                    
-                        
-                    
-                    <div className="book__text">
-                        <p className={"lead"} key={book.rank}>
-                            {book.rank}. {book.title}
-                        </p>
-                        <p>
-                            {book.description}
-                        </p> 
-                    </div>
-                    
+            <div key={book.rank} className={"book"}>
+                <a href={book.amazon_product_url}>                    
+                    <img className="book__image" src={book.book_image} alt=""/>      
+                    <div className="overlay">
+                        <div className="book__text">
+                            <h1 className="lead">{book.rank}.</h1>
+                            <p>
+                                {book.description}
+                            </p> 
+                        </div>                                       
+                    </div>                    
                 </a>                       
             </div>  
              

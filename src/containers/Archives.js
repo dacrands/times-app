@@ -42,12 +42,12 @@ class Archives extends Component {
                     <h1>
                         {         
                             this.props.archives[0]
-                            ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
+                            ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
                             : 'loading...'
                         }                                                  
                     </h1>
 
-                    <button onClick={this.props.fetchArchives}>
+                    <button className="button" onClick={this.props.fetchArchives}>
                         GetRandomYear
                     </button>
                 </div>                
@@ -55,7 +55,7 @@ class Archives extends Component {
                     {         
                         this.props.archives[0]
                         ? this.props.archives[0].slice(1, 50).map(this.renderArchives)
-                        : null 
+                        : 'loading...' 
                     }
                 </section>
             </div>
