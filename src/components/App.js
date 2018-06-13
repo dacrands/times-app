@@ -10,10 +10,9 @@ import {
 import Header from './Header';
 import Best from '../containers/Best';
 import Archives from '../containers/Archives';
-// import History from '../containers/History';
+import Popular from '../containers/Popular';
 
 import Nav from '../components/Nav';
-
 
 const App = () => (
   <Router>
@@ -24,7 +23,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Best} /> 
         <Route path="/archives" component={Archives} /> 
-        {/* <Route path="/best" component={Best} />  */}
+        <Route path="/popular" component={Popular} /> 
       </Switch>
     </div>
   </Router>

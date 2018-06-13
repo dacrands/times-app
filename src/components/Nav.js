@@ -22,7 +22,7 @@ export default class Nav extends Component {
                         <NavLink
                             to="/popular"
                             activeClassName="active"
-                        >Best Sellers</NavLink>
+                        >Popular</NavLink>
                     </li>
                     
                 </ul>

@@ -55,7 +55,7 @@ class Archives extends Component {
                     {         
                         this.props.archives[0]
                         ? this.props.archives[0].slice(1, 50).map(this.renderArchives)
-                        : null 
+                        : 'loading...' 
                     }
                 </section>
             </div>
