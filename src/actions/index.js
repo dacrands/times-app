@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 
+
 const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json';
 const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
 const POPULAR_URL = 'http://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
@@ -38,6 +39,7 @@ export function fetchHistory() {
     });
 }
 
+
 export function fetchPopular() {
     return fetch(popularUrl)
     .then((response) => {
@@ -67,17 +69,37 @@ export function fetchBest() {
 }
 
 
-export function fetchArchives() {
-    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(1995, 2010)}/${getRandomMonth()}.json`;
+// export function fetchArchives(start, end) {
+//     const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(start, end)}/${getRandomMonth()}.json`;
+//     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
+//     return fetch(archivesUrl)
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then((request) => {
+//             return {
+//                 type: FETCH_ARCHIVES,
+//                 payload: request
+//             }
+//     }).catch(e => {console.log(e)});
+// }
+export function fetchArchivesSuccess(request) {
+    return { 
+        type: FETCH_ARCHIVES,
+        payload: request
+    };
+}
+
+export function fetchArchives(min, max) {
+    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
-    return fetch(archivesUrl)
-        .then((response) => {
-            return response.json();
-        })
-        .then((request) => {
-            return {
-                type: FETCH_ARCHIVES,
-                payload: request
-            }
-    });
+    return dispatch => {        
+        return fetch(archivesUrl)
+            .then((response) => {
+                return response.json();
+            })
+            .then((request) => {
+                return dispatch(fetchArchivesSuccess(request))            
+        }).catch(e => {console.log(e)});
+    }    
 }

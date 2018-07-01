@@ -97,6 +97,18 @@ body {
     font-size: 4rem;
 }
 
+.title__inputs {
+    /* outline: 2px dashed purple; */
+    /* display: flex;
+    justify-content: space-around; */
+}
+
+.inputs {
+    /* outline: 3px dashed darkgoldenrod;/ */
+    display: flex;
+    flex-direction: column;
+}
+
 .books {
     padding: 2rem;
     display: grid;
