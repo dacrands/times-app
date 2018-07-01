@@ -85,7 +85,7 @@ class Archives extends Component {
                                     name="quantity" 
                                     min="1900" 
                                     max="2010" 
-                                    step="10"
+                                    step="1"
                                 />
                             </label>
                             
@@ -98,8 +98,8 @@ class Archives extends Component {
                                         type="number" 
                                         name="quantity" 
                                         min={this.state.yearStart} 
-                                        max="2010" 
-                                        step="10"
+                                        max="2018" 
+                                        step="1"
                                     />    
                                     : null
                                 }                                    
