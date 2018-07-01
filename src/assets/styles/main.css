@@ -203,7 +203,7 @@ ARCHIVES
     overflow-x: hidden;
 }
 
-.archives {
+.articles {
     /* outline: 3px dashed red; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
