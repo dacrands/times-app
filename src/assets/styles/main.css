@@ -34,15 +34,19 @@ body {
 }
 
 .button {
-    border: 3px solid rgb(0, 81, 255);
+    /* border: 3px solid rgb(0, 81, 255); */
+    border: none;
     border-radius: 5px;
     background: rgb(76, 133, 255);
+    background: linear-gradient(to bottom, rgb(104, 151, 253), rgb(33, 100, 247));
     color: #f9f9f9;
-    padding: 5px;
+    padding: 8px;
+    transition: all 200ms ease-in;
 }
 
 .button:hover {
     cursor: pointer;
+    background: linear-gradient(to bottom, rgb(90, 139, 247), rgb(14, 88, 248));
 }
 
 
