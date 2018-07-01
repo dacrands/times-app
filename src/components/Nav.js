@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default class Nav extends Component {
+    
+    componentDidMount() {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > this.refs.nav.offsetTop) {
+                this.refs.nav.classList.add('nav--sticky');
+            } else {
+                this.refs.nav.classList.remove('nav--sticky');
+            }
+        });
+    }
+
     render() {
         return (
-            <nav className="nav  container">
+            <nav ref="nav" className="nav  container">
                 <ul className="nav__list">
                     <li className="nav__list-item">
                         <NavLink

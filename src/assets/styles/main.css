@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin:400,700');
+@import url('https://fonts.googleapis.com/css?family=Fanwood+Text');
 
 body {
     margin: 0;
     font-family: 'Cabin', sans-serif;
     /* margin-top: 35vh; */
     overflow-x: hidden;
+    color: #242222;
 }
 
 .thumbnail {
@@ -51,20 +53,40 @@ body {
 }
 
 
-
-
-
+/* ===================
+NAV
+=================== */
+.nav {
+    /* outline: 3px solid purple; */
+    border-bottom: 1px solid #dadada;
+    background: #ffffff;
+    transition: all 500ms ease-in-out;
+    display: flex;
+    
+}
 .nav__list {
     /* outline: 3px solid purple; */
+    flex-grow: 1;
     /* margin: 0; */
     display: flex;    
     justify-content: space-around;
     list-style: none;
+    margin: 0;
+}
+
+.nav__list-item {
+    /* outline: 3px dashed darkcyan; */
+    /* padding: 5px; */
+}
+
+.nav__list-item a {
+    padding: 5px;
 }
 
 .nav__list a,
 .nav__list a:visited,
 .nav__list a:active {
+    display: inline-block;
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: bold;
@@ -72,37 +94,52 @@ body {
     /* color: #2e2e2e; */
 }
  .nav__list .nav__list-item .active {
-     color: red;
+     /* outline: 3px solid purple; */
+     background: rgb(0, 81, 255);
+     color: #f1f1f1;
+ }
+
+ .nav--sticky {
+     position: fixed;
+     top: 0;    
+     left: 0;
+     right: 0;
+     z-index: 9;
  }
 
 
 
+ /* ===================
+HEADER
+=================== */
 
 .header {
     padding: 1rem;    
-    background: #2e2e2e;
-    color: #dadada;
+    /* background: #2e2e2e; */
+    /* background: #dadada; */
     font-size: 2rem;    
+    font-family: 'Fanwood Text', serif; 
+    text-align: center;
+    
 }
 
+
+/* ===================
+CONTAINER
+=================== */
 
 .container {
     /* outline: 4px solid green; */
     max-width: 1500px;
     margin: 0 auto;    
-}
-
-.title {
-    padding: 20px;
-}
-
-.title .year {
-    /* outline: 4px solid orange; */
-    margin-left: 5px;
-    font-size: 4rem;
+    padding: 0 2em;
 }
 
 
+
+/* ===================
+BOOKS
+=================== */
 .books {
     padding: 2rem;
     display: grid;
@@ -156,6 +193,11 @@ body {
     font-size: 3rem;
 }
 
+
+/* ===================
+ARCHIVES
+=================== */
+
 .container--archives {
     position: relative;
     overflow-x: hidden;
@@ -163,10 +205,8 @@ body {
 
 .archives {
     /* outline: 3px dashed red; */
-    padding: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    /* grid-auto-rows: min-content; */
     grid-gap: 30px;
 }
 
@@ -180,11 +220,19 @@ body {
     height: min-content;    
 }
 
+
+
+
+
 /* .archive img {
     width: 175px;
     height: 175px;
 } */
 
+
+/* ===================
+SEARCH
+=================== */
 .inputs {
     /* outline: 3px dashed darkgoldenrod;/ */
     display: flex;
@@ -197,11 +245,10 @@ body {
 .search {
     /* outline: 3px dashed black; */
     position: fixed;
+    top: 40vh;
     left: 0;
     background: #dadada;
     box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-    width: 15em;
-    /* height: 100vh;      */
     transition: all 200ms ease-in;
     transform: translateX(0);
 }

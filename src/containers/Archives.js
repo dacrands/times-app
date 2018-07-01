@@ -20,10 +20,7 @@ class Archives extends Component {
     }
     
     componentDidMount() {
-        this.props.fetchArchives(1811, 2018);
-        window.addEventListener('scroll', () => {
-            console.log(window.scrollY);
-        });                         
+        this.props.fetchArchives(1811, 2018);                         
     }
 
     setYearStart(event){
@@ -46,17 +43,21 @@ class Archives extends Component {
                 key={index} 
                 className={"archive"}
             >
-                <h3>
-                    {post.headline.main}
-                </h3>
-                <p className="lead">{new Date(post.pub_date).toDateString()}</p>
-                <p>
-                    <img 
-                        src={post.multimedia[0] ? `https://nyt.com/${post.multimedia[0].url}` : ""}
-                        alt=""
-                    />                
-                    {post.lead_paragraph}
-                </p>           
+                <div className="archive__title">
+                    <h3>
+                        {post.headline.main}
+                    </h3>
+                    <p className="lead">{new Date(post.pub_date).toDateString()}</p>
+                </div>                
+                <div className="archive__content">
+                    <p>
+                        <img 
+                            src={post.multimedia[0] ? `https://nyt.com/${post.multimedia[0].url}` : ""}
+                            alt=""
+                        />                
+                        {post.lead_paragraph}
+                    </p>           
+                </div>                
             </article>            
         );
     }
@@ -70,7 +71,7 @@ class Archives extends Component {
                     <h1>
                         {         
                             this.props.archives[0]
-                            ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
+                            ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
                             : 'loading...'
                         }                                                  
                     </h1>
@@ -119,6 +120,7 @@ class Archives extends Component {
                                         this.state.showSearch
                                         ? '\u2093'
                                         : '\u203A'
+                                        // : '\uD83D\uDD0E'
                                     }                                
                                 </span>
                             </button>   
@@ -128,7 +130,7 @@ class Archives extends Component {
                 <section className={"archives"}>                    
                     {         
                         this.props.archives[0]
-                        ? this.props.archives[0].slice(1, 50).map(this.renderArchives)
+                        ? this.props.archives[0].slice(1, 100).map(this.renderArchives)
                         : 'loading...' 
                     }
                 </section>
