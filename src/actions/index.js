@@ -17,15 +17,30 @@ export const FETCH_HISTORY = 'FETCH_HISTORY';
 export const FETCH_BEST = 'FETCH_BEST';
 export const FETCH_ARCHIVES = 'FETCH_ARCHIVES';
 export const FETCH_POPULAR = 'FETCH_POPULAR';
+export const FETCH_ERROR = 'FETCH_ERROR';
+export const FETCH_LOADING = 'FETCH_LOADING';
 
-function getRandomYear(min, max) {
-    return Math.floor(Math.random() * (max-min) + min);
+// -------------------------
+// Error and loading actions
+// -------------------------
+export function fetchError(bool) {
+    return  {
+        type: 'FETCH_ERROR',
+        isError: bool
+    }
 }
 
-function getRandomMonth() {
-    return Math.floor(Math.random() * (12-1) + 1);
+export function fetchLoading(bool) {
+    return {
+        type: 'FETCH_LOADING',
+        isLoading: bool
+    };
 }
 
+
+// -------------------------
+// Fetches
+// -------------------------
 export function fetchHistory() {
     return fetch(historyUrl)
     .then((response) => {
@@ -68,21 +83,6 @@ export function fetchBest() {
     });
 }
 
-
-// export function fetchArchives(start, end) {
-//     const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(start, end)}/${getRandomMonth()}.json`;
-//     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
-//     return fetch(archivesUrl)
-//         .then((response) => {
-//             return response.json();
-//         })
-//         .then((request) => {
-//             return {
-//                 type: FETCH_ARCHIVES,
-//                 payload: request
-//             }
-//     }).catch(e => {console.log(e)});
-// }
 export function fetchArchivesSuccess(request) {
     return { 
         type: FETCH_ARCHIVES,
@@ -93,13 +93,29 @@ export function fetchArchivesSuccess(request) {
 export function fetchArchives(min, max) {
     const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
     const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
-    return dispatch => {        
+    return dispatch => {
+        dispatch(fetchLoading(true));        
+        dispatch(fetchError(false));        
         return fetch(archivesUrl)
-            .then((response) => {
+            .then((response) => {                
                 return response.json();
             })
             .then((request) => {
+                dispatch(fetchLoading(false))
                 return dispatch(fetchArchivesSuccess(request))            
-        }).catch(e => {console.log(e)});
+        }).catch(e => dispatch(fetchError(true)));
     }    
+}
+
+
+// ---------------
+// Random number generators for
+// archives action
+// ---------------
+function getRandomYear(min, max) {
+    return Math.floor(Math.random() * (max-min) + min);
+}
+
+function getRandomMonth() {
+    return Math.floor(Math.random() * (12-1) + 1);
 }

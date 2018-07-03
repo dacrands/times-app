@@ -53,6 +53,18 @@ body {
 }
 
 
+.title {
+    margin-top: 1em;
+    background: #eee;
+    padding: 1em;
+    /* text-align: center; */
+}
+
+.title h3 {
+    margin: 0;
+}
+
+
 /* ===================
 NAV
 =================== */
@@ -74,10 +86,7 @@ NAV
     margin: 0;
 }
 
-.nav__list-item {
-    /* outline: 3px dashed darkcyan; */
-    /* padding: 5px; */
-}
+
 
 .nav__list-item a {
     padding: 5px;
@@ -93,11 +102,16 @@ NAV
     color: rgb(0, 81, 255);
     /* color: #2e2e2e; */
 }
+
+.nav__list a:hover {
+    color: #222;
+}
  .nav__list .nav__list-item .active {
      /* outline: 3px solid purple; */
-     background: rgb(0, 81, 255);
+     background: rgb(43, 104, 238);
      color: #f1f1f1;
  }
+
 
  .nav--sticky {
      position: fixed;
@@ -108,6 +122,21 @@ NAV
  }
 
 
+/* ===================
+ARTICLES
+
+Provides a responsive grid
+for the Archives and Popular
+components
+=================== */
+
+.articles {
+    /* outline: 3px dashed red; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 30px;
+}
+
 
  /* ===================
 HEADER
@@ -115,12 +144,9 @@ HEADER
 
 .header {
     padding: 1rem;    
-    /* background: #2e2e2e; */
-    /* background: #dadada; */
     font-size: 2rem;    
     font-family: 'Fanwood Text', serif; 
-    text-align: center;
-    
+    text-align: center;    
 }
 
 
@@ -203,12 +229,7 @@ ARCHIVES
     overflow-x: hidden;
 }
 
-.articles {
-    /* outline: 3px dashed red; */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-gap: 30px;
-}
+
 
 .archive {
     padding: 2em;
@@ -247,7 +268,7 @@ SEARCH
     position: fixed;
     top: 40vh;
     left: 0;
-    background: #dadada;
+    background: #eee;
     box-shadow: 0 3px 6px rgba(0,0,0,0.3);
     transition: all 200ms ease-in;
     transform: translateX(0);
@@ -277,6 +298,30 @@ SEARCH
     font-size: 2rem;
 }
 
+/* ===================
+POPULAR
+=================== */
+.popular {
+    /* border: 1px solid #dadada; */
+    padding: 1em;
+}
+.popular__items {
+    /* background-size: contain;
+    background-repeat: no-repeat; */
+    /* padding: 1em; */    
+    display: flex;
+    /* align-items: center; */
+}
 
+.popular__image {
+    margin-right: 1em;
+}
+
+
+@media(max-width: 850px) {
+    .header{
+        font-size: 1.4rem;
+    }
+}
 
 

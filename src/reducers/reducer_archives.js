@@ -6,4 +6,4 @@ export default function(state=[], action) {
             return [action.payload.response.docs]                    
     }
     return state; 
-}
+};

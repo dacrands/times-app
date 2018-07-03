@@ -14,25 +14,42 @@ class Popular extends Component {
 
     renderPopular(post) {
         return (
-            <article className={"archive"}>
-            <a href={post.url}>
-                <h3>
-                    {post.title}
-                </h3>
-            </a>
-                <p className="lead">{post.published_date}</p>
-                <img className="fluid thumbnail" src={post.media["0"]["media-metadata"]["1"].url} alt=""/>
-                <p>                           
-                {post.abstract}
-                </p>           
+            <div>
+
+            
+            <article 
+                className={"popular"}
+                // style={{backgroundImage: `url(${post.media["0"]["media-metadata"]["1"].url})`}}
+            >
+                <a href={post.url}>  
+                                <h3>
+                                    {post.title}
+                                </h3>
+                </a> 
+                <div className="popular__items">
+                    <div className="popular__image">
+                        <img className="fluid thumbnail" src={post.media["0"]["media-metadata"]["1"].url} alt=""/>
+                    </div>                    
+                    <div className="popular__text">
+                                
+                        <p className="lead">{post.published_date}</p>
+                        
+                        <p>                           
+                        {post.abstract}
+                        </p>                  
+                    </div>                
+                </div>
+                
             </article>            
+            </div>
         );
     }
 
     render() {
         return (
-            <div>
-                <section className={"archives"}>                    
+            <div className="container">
+                <h1>Most Popular Articles for {new Date().toDateString()}    </h1>
+                <section className={"articles"}>                    
                     {         
                         this.props.popular[0]
                         ? this.props.popular[0].map(this.renderPopular)

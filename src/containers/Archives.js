@@ -8,7 +8,7 @@ class Archives extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            yearStart: 1811,
+            yearStart: 1900,
             yearEnd: 2018,
             month: null,
             showYearEnd: false,
@@ -20,7 +20,7 @@ class Archives extends Component {
     }
     
     componentDidMount() {
-        this.props.fetchArchives(1811, 2018);                         
+        this.props.fetchArchives(1900, 2018);                         
     }
 
     setYearStart(event){
@@ -63,71 +63,99 @@ class Archives extends Component {
     }
 
     render() {
-        return(
-            <div className="container--archives">
+        if (this.props.isError) {
+            return (
+                <div>
+                    <p>Sorry! There was an error loading the items</p>
+                    <button 
+                        className="button" 
+                        onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}
+                    >
+                        Search archives
+                    </button>
+                </div>
+            );
             
-            <div className="container">                
+        }
+
+        if (this.props.isLoading) {            
+            return (
+                <div className="container">
+                    <div className="loading">
+                        <h1>Grabbing random articles...</h1>
+                    </div>                    
+                </div>
+            );
+        }
+
+        return(
+            <div className="container--archives">            
+            <div className="container">                     
                 <div className="title">
-                    <h1>
-                        {         
-                            this.props.archives[0]
-                            ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
-                            : 'loading...'
-                        }                                                  
-                    </h1>
-                    <h3>Showing randoms articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
-                    <div className={this.state.showSearch ? "search" : "search search--hide"}>                                        
-                        <div className="search__container">
-                            <div className="inputs">
-                                <p>Enter a year between 1811 and 2018!</p>
+                    <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
+                    <button 
+                        className="button" 
+                        onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}
+                    >
+                        Search archives
+                    </button>
+                </div>
+                    
+                <h1>
+                    {         
+                        this.props.archives[0]
+                        ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
+                        : 'loading...'
+                    }                                                  
+                </h1>
+
+                <div className={this.state.showSearch ? "search" : "search search--hide"}>                                        
+                    <div className="search__container">
+                        <div className="inputs">
+                            <p>Enter a year between 1900 and 2018!</p>
+                            <label htmlFor="">
+                                Start Year
+                                <input 
+                                    onChange={this.setYearStart}                                
+                                    type="number" 
+                                    name="quantity" 
+                                    min="1900" 
+                                    max="2010" 
+                                    step="1"
+                                />
+                            </label>
+                            {
+                                this.state.showYearEnd ?                                    
                                 <label htmlFor="">
-                                    Start Year
-                                    <input 
-                                        onChange={this.setYearStart}                                
+                                End Year
+                                    <input                                 
+                                        onChange={this.setYearEnd}                                
                                         type="number" 
                                         name="quantity" 
-                                        min="1900" 
-                                        max="2010" 
+                                        min={this.state.yearStart} 
+                                        max="2018" 
                                         step="1"
-                                    />
+                                    />    
                                 </label>
-                                {
-                                    this.state.showYearEnd ?                                    
-                                    <label htmlFor="">
-                                    End Year
-                                        <input                                 
-                                            onChange={this.setYearEnd}                                
-                                            type="number" 
-                                            name="quantity" 
-                                            min={this.state.yearStart} 
-                                            max="2018" 
-                                            step="1"
-                                        />    
-                                    </label>
-                                    : null
-                                }                                                                                                                                                            
-                            </div>                                                                      
-                            <button className="button" onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}>
-                                    Search archives
-                            </button>
+                                : null
+                            }                                                                                                                                                            
+                        </div>                                                                      
+                        <button className="button" onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}>
+                                Search archives
+                        </button>
 
-                            <button 
-                                className="search__tab" 
-                                onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
-                            >                                
-                                <span>
-                                    {
-                                        this.state.showSearch
-                                        ? '\u2093'
-                                        : '\u203A'
-                                        // : '\uD83D\uDD0E'
-                                    }                                
-                                </span>
-                            </button>   
-                        </div>  
-                    </div>                                         
-                </div>                
-                <section className={"archives"}>                    
+                        <button 
+                            className="search__tab" 
+                            onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
+                        >                                
+                            <span>
+                                {this.state.showSearch ? '\u2093': '\u203A'}                                                                    
+                            </span>
+                        </button>   
+                    </div>  
+                </div>                                         
+              
+                <section className={"articles"}>                    
                     {         
                         this.props.archives[0]
                         ? this.props.archives[0].slice(1, 100).map(this.renderArchives)
@@ -144,8 +172,15 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ fetchArchives }, dispatch);
 }
 
-function mapStateToProps({ archives }) {
-    return { archives };
+// function mapStateToProps({ archives }) {
+//     return { archives  };
+// }
+const mapStateToProps = (state) => {
+    return { 
+        archives: state.archives,  
+        isError: state.error,
+        isLoading: state.loading,
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Archives);
