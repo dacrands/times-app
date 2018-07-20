@@ -14,6 +14,11 @@ body {
     width: 175px;
 }
 
+.img  {
+    max-width: 100%;
+    height: auto;
+}
+
 .overlay {
     position: absolute;
     top: 0;
@@ -265,6 +270,7 @@ SEARCH
 }
 .search {
     /* outline: 3px dashed black; */
+    display: none;
     position: fixed;
     top: 40vh;
     left: 0;

@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import Header from './Header';
+import ScrollToTop from './ScrollToTop';
 import Best from '../containers/Best';
 import Archives from '../containers/Archives';
 import Popular from '../containers/Popular';
@@ -16,16 +17,17 @@ import Nav from '../components/Nav';
 
 const App = () => (
   <Router>
-    <div>
-      
-      <Header />
-      <Nav />
-      <Switch>
-        <Route exact path="/" component={Best} /> 
-        <Route path="/archives" component={Archives} /> 
-        <Route path="/popular" component={Popular} /> 
-      </Switch>
-    </div>
+    <ScrollToTop>
+      <div>      
+        <Header />
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Best} /> 
+          <Route path="/archives" component={Archives} /> 
+          <Route path="/popular" component={Popular} /> 
+        </Switch>
+      </div>
+    </ScrollToTop>
   </Router>
 );
 
