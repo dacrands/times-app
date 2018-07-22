@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchArchives } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
+import Input from '../components/Inputs';
+
 class Archives extends Component {
 
     constructor(props) {
@@ -142,7 +144,14 @@ class Archives extends Component {
             <div className="container">                     
                 <div className="title">
                     <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
-                    <div className="inputs">
+                    <Input 
+                        yearStart={this.state.yearStart} 
+                        yearEnd={this.state.yearEnd}
+                        setYearStart={this.setYearStart}
+                        setYearEnd={this.setYearEnd}
+                        showYearEnd={this.state.showYearEnd}
+                    />
+                    {/* <div className="inputs">
                             <p>Enter a year between 1900 and 2018!</p>
                             <label htmlFor="">
                                 Start Year
@@ -169,14 +178,15 @@ class Archives extends Component {
                                     />    
                                 </label>
                                 : null
-                            }                                                                                                                                                            
-                        </div>   
-                    <button 
+                            }      
+                            <button 
                         className="button" 
                         onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}
                     >
                         Search archives
-                    </button>
+                    </button>                                                                                                                                                      
+                        </div>    */}
+                    
                 </div>
                     
                 <h1 ref={'title'}>
@@ -187,9 +197,18 @@ class Archives extends Component {
                     }                                                  
                 </h1>
 
+                {/* <Search yearStart={this.state.yearStart} yearEnd={this.state.yearEnd} showSearch={this.state.showSearch} /> */}
                 <div ref={"search"} className={this.state.showSearch ? "search" : "search search--hide"}>                                        
                     <div className="search__container">
-                        <div className="inputs">
+
+                    <Input 
+                        yearStart={this.state.yearStart} 
+                        yearEnd={this.state.yearEnd}
+                        setYearStart={this.setYearStart}
+                        setYearEnd={this.setYearEnd}
+                        showYearEnd={this.state.showYearEnd}
+                    />
+                        {/* <div className="inputs">
                             <p>Enter a year between 1900 and 2018!</p>
                             <label htmlFor="">
                                 Start Year
@@ -220,7 +239,7 @@ class Archives extends Component {
                         </div>                                                                      
                         <button className="button" onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}>
                                 Search archives
-                        </button>
+                        </button> */}
 
                         <button 
                             className="search__tab" 
@@ -251,9 +270,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ fetchArchives }, dispatch);
 }
 
-// function mapStateToProps({ archives }) {
-//     return { archives  };
-// }
 const mapStateToProps = (state) => {
     return { 
         archives: state.archives,  

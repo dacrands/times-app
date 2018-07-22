@@ -6,7 +6,7 @@ const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-n
 const POPULAR_URL = 'http://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
 
 
-const API_KEY = process.env.API_KEY || '1e2e8c3de5ee427c835460f4a58a4792';
+const API_KEY = process.env.API_KEY;
 
 const historyUrl = `${HISTORY_URL}?api-key=${API_KEY}`;
 const bestUrl = `${BEST_URL}?api-key=${API_KEY}`;
