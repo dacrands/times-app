@@ -7,9 +7,8 @@ class Input extends Component {
     render() {
         return (
             <div className="inputs">
-                <p>Enter a year between 1900 and 2018!</p>
                 <label htmlFor="">
-                    Start Year
+                    Start Year: 
                     <input 
                         onChange={this.props.setYearStart}                                
                         type="number" 

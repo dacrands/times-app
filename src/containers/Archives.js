@@ -27,7 +27,7 @@ class Archives extends Component {
         
         // Show the side search menu only when main search is out of view
         window.addEventListener('scroll', () => {
-            if (window.scrollY > this.refs.title.clientHeight) {
+            if (window.scrollY > this.refs.title.offsetTop) {
                 this.refs.search.style.display = "block"
             } else {
                 this.refs.search.style.display = "none"
@@ -67,7 +67,7 @@ class Archives extends Component {
                         <img
                             className="img"
                             src={post.multimedia[0] ? `https://nyt.com/${post.multimedia[0].url}` : ""}
-                            alt=""
+                            alt={`${post.headline.main} image`}
                         />                
                         {post.lead_paragraph}
                     </p>           
@@ -82,47 +82,13 @@ class Archives extends Component {
                 <div>
                     <p>Sorry! There was an error loading the items</p>
                     <div className="search__container">
-                        <div className="inputs">
-                            <p>Enter a year between 1900 and 2018!</p>
-                            <label htmlFor="">
-                                Start Year
-                                <input 
-                                    onChange={this.setYearStart}                                
-                                    type="number" 
-                                    name="quantity" 
-                                    min="1900" 
-                                    max="2010" 
-                                    step="1"
-                                />
-                            </label>
-                            {
-                                this.state.showYearEnd ?                                    
-                                <label htmlFor="">
-                                End Year
-                                    <input                                 
-                                        onChange={this.setYearEnd}                                
-                                        type="number" 
-                                        name="quantity" 
-                                        min={this.state.yearStart} 
-                                        max="2018" 
-                                        step="1"
-                                    />    
-                                </label>
-                                : null
-                            }                                                                                                                                                            
-                        </div>                                                                      
-                        <button className="button" onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}>
-                                Search archives
-                        </button>
-
-                        <button 
-                            className="search__tab" 
-                            onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
-                        >                                
-                            <span>
-                                {this.state.showSearch ? '\u2093': '\u203A'}                                                                    
-                            </span>
-                        </button>   
+                        <Input 
+                            yearStart={this.state.yearStart} 
+                            yearEnd={this.state.yearEnd}
+                            setYearStart={this.setYearStart}
+                            setYearEnd={this.setYearEnd}
+                            showYearEnd={this.state.showYearEnd}
+                        />                      
                     </div>  
                 </div>
             );
@@ -133,7 +99,12 @@ class Archives extends Component {
             return (
                 <div className="container">
                     <div className="loading">
-                        <h1>Grabbing random articles...</h1>
+                        <h1>Grabbing articles...</h1>
+                        <div class="spinner">
+                            <div class="disc">
+                                <div class="disc__item"></div>
+                            </div>                        
+                        </div>
                     </div>                    
                 </div>
             );
@@ -142,60 +113,40 @@ class Archives extends Component {
         return(
             <div className="container--archives">            
             <div className="container">                     
-                <div className="title">
-                    <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
-                    <Input 
-                        yearStart={this.state.yearStart} 
-                        yearEnd={this.state.yearEnd}
-                        setYearStart={this.setYearStart}
-                        setYearEnd={this.setYearEnd}
-                        showYearEnd={this.state.showYearEnd}
-                    />
-                    {/* <div className="inputs">
-                            <p>Enter a year between 1900 and 2018!</p>
-                            <label htmlFor="">
-                                Start Year
-                                <input 
-                                    onChange={this.setYearStart}                                
-                                    type="number" 
-                                    name="quantity" 
-                                    min="1900" 
-                                    max="2010" 
-                                    step="1"
-                                />
-                            </label>
-                            {
-                                this.state.showYearEnd ?                                    
-                                <label htmlFor="">
-                                End Year
-                                    <input                                 
-                                        onChange={this.setYearEnd}                                
-                                        type="number" 
-                                        name="quantity" 
-                                        min={this.state.yearStart} 
-                                        max="2018" 
-                                        step="1"
-                                    />    
-                                </label>
-                                : null
-                            }      
-                            <button 
-                        className="button" 
-                        onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}
-                    >
-                        Search archives
-                    </button>                                                                                                                                                      
-                        </div>    */}
+                
                     
-                </div>
-                    
-                <h1 ref={'title'}>
+                <div ref={'title'}>
                     {         
                         this.props.archives[0]
-                        ? `Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`
+                        ? 
+                            <header>
+                                <h1>
+                                    {`Current Year Range: ${this.state.yearStart} - ${this.state.yearEnd}`}
+                                </h1>
+                                {/* <hr/>               */}
+                                <div className="title">
+                                    <div className="title__item">
+                                        <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
+                                    </div>                                                      
+                                    <div className="title__item">
+                                        <Input 
+                                            yearStart={this.state.yearStart} 
+                                            yearEnd={this.state.yearEnd}
+                                            setYearStart={this.setYearStart}
+                                            setYearEnd={this.setYearEnd}
+                                            showYearEnd={this.state.showYearEnd}
+                                        />                
+                                    </div>                                                    
+                                </div>                                
+                                <h2>
+                                {`Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`}                                
+                                </h2>
+                                
+                            </header>
                         : 'loading...'
                     }                                                  
-                </h1>
+                </div>
+                
 
                 {/* <Search yearStart={this.state.yearStart} yearEnd={this.state.yearEnd} showSearch={this.state.showSearch} /> */}
                 <div ref={"search"} className={this.state.showSearch ? "search" : "search search--hide"}>                                        
@@ -207,42 +158,9 @@ class Archives extends Component {
                         setYearStart={this.setYearStart}
                         setYearEnd={this.setYearEnd}
                         showYearEnd={this.state.showYearEnd}
-                    />
-                        {/* <div className="inputs">
-                            <p>Enter a year between 1900 and 2018!</p>
-                            <label htmlFor="">
-                                Start Year
-                                <input 
-                                    onChange={this.setYearStart}                                
-                                    type="number" 
-                                    name="quantity" 
-                                    min="1900" 
-                                    max="2010" 
-                                    step="1"
-                                />
-                            </label>
-                            {
-                                this.state.showYearEnd ?                                    
-                                <label htmlFor="">
-                                End Year
-                                    <input                                 
-                                        onChange={this.setYearEnd}                                
-                                        type="number" 
-                                        name="quantity" 
-                                        min={this.state.yearStart} 
-                                        max="2018" 
-                                        step="1"
-                                    />    
-                                </label>
-                                : null
-                            }                                                                                                                                                            
-                        </div>                                                                      
-                        <button className="button" onClick={() => {this.props.fetchArchives(this.state.yearStart, this.state.yearEnd)}}>
-                                Search archives
-                        </button> */}
-
+                    />                       
                         <button 
-                            className="search__tab" 
+                            className="button search__tab" 
                             onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
                         >                                
                             <span>

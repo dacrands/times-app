@@ -58,11 +58,12 @@ body {
 }
 
 
-.title {
+.title {            
+    max-width: 500px;    
     margin-top: 1em;
-    background: #eee;
-    padding: 1em;
-    /* text-align: center; */
+    padding: 1em;    
+    background: #dadada;    
+    /* box-shadow: 2px 2px 6px rgba(0,0,0,0.25); */
 }
 
 .title h3 {
@@ -111,7 +112,7 @@ NAV
 .nav__list a:hover {
     color: #222;
 }
- .nav__list .nav__list-item .active {
+.nav__list .nav__list-item .active {
      /* outline: 3px solid purple; */
      background: rgb(43, 104, 238);
      color: #f1f1f1;
@@ -260,14 +261,15 @@ ARCHIVES
 SEARCH
 =================== */
 .inputs {
-    /* outline: 3px dashed darkgoldenrod;/ */
+    /* outline: 3px dashed darkgoldenrod; */
     display: flex;
     flex-direction: column;
 }
 
 .inputs input {
-    margin: 5px 0;
+    margin: 5px;
 }
+
 .search {
     /* outline: 3px dashed black; */
     display: none;
@@ -281,7 +283,7 @@ SEARCH
 }
 
 .search--hide {
-    transform: translateX(-100%);
+    transform: translateX(-102%);
 }
 
 
@@ -296,8 +298,8 @@ SEARCH
     top: 0;
     right: 1px;
     margin: 0;
-    transform: translateX(100%);
-    background: rgb(43, 104, 238);
+    transform: translateX(102%);
+    /* background: rgb(43, 104, 238); */
     box-shadow: 0 1px 2px rgba(0,0,0,0.3);
     border: none;        
     color: #f1f1f1;
@@ -322,6 +324,74 @@ POPULAR
 .popular__image {
     margin-right: 1em;
 }
+
+
+
+.loading {
+    text-align: center;
+    padding-top: 2em;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+  /*   background: #000; */
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  .disc {
+  /*   background: blue; */
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .disc__item {
+  /*   background: blue; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    border: 5px solid white;
+    border-left-color: rgb(76, 133, 255);
+    border-right-color: rgb(76, 133, 255);  
+    transition: all 300ms ease;
+    animation: 1000ms infinite spin;
+    padding: 5px;  
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);   
+      width: inherit;
+      height: inherit;
+    }
+    
+    50% {
+  /*     transform: rotate(360deg);  */
+        margin-top: 17.5px;
+        margin-left: 17.5px;
+        width: 70px;
+        height: 70px;
+    }
+    
+    100% {
+      transform: rotate(360deg);   
+      width: inherit;
+      height: inherit;
+    }
+    
+   
+  }
+
+
 
 
 @media(max-width: 850px) {

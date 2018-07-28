@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 export default class Nav extends Component {
     
     componentDidMount() {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > this.refs.nav.offsetTop) {
+        const navHeight = this.refs.nav.offsetTop;
+        window.addEventListener('scroll', () => {            
+            if (window.scrollY > navHeight) {
                 this.refs.nav.classList.add('nav--sticky');
             } else {
                 this.refs.nav.classList.remove('nav--sticky');
