@@ -10,7 +10,8 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'NYT app'
-    })
+    }),
+    new webpack.EnvironmentPlugin(['API_KEY'])
   ],
   output: {
     filename: '[name].bundle.js',
