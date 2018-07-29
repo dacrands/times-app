@@ -330,6 +330,7 @@ SEARCH
 .search__tab p {
     /* font-size: 3rem; */
     margin: 0;
+    fill: rgb(233, 227, 227);
 }
 
 /* ===================

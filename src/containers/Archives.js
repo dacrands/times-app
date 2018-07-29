@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux';
 
 import Input from '../components/Inputs';
 
+import Close from '../assets/images/close.svg';
+import Search from '../assets/images/search.svg';
+
 class Archives extends Component {
 
     constructor(props) {
@@ -99,10 +102,10 @@ class Archives extends Component {
             return (
                 <div className="container">
                     <div className="loading">
-                        <h1>Grabbing articles...</h1>
-                        <div class="spinner">
-                            <div class="disc">
-                                <div class="disc__item"></div>
+                        <h2>Grabbing random articles...</h2>
+                        <div className="spinner">
+                            <div className="disc">
+                                <div className="disc__item"></div>
                             </div>                        
                         </div>
                     </div>                    
@@ -164,7 +167,11 @@ class Archives extends Component {
                             onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
                         >                                
                             <p>
-                                {this.state.showSearch ? '\u2093': '\u203A'}                                                                    
+                                {
+                                    this.state.showSearch 
+                                    ? <Close /> 
+                                    : <Search />
+                                }
                             </p>
                         </button>   
                     </div>  
