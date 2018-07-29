@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import App from './components/App';
 import reducers from './reducers';
 
-import './assets/styles/main.css';
+import './assets/styles/main.scss';
 
 
 if (process.env.NODE_ENV !== 'production') {

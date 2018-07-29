@@ -29,12 +29,15 @@ module.exports = {
               use: ['babel-loader']
           },
           {
-            test: /\.css$/,
+            test: /\.(scss|css)$/,
             use: [
+              process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
               'style-loader',
-              'css-loader'
+              'css-loader',
+              'sass-loader'
             ]
           },
+
           {
             test: /\.(png|jpg|gif)$/,
             use: [
