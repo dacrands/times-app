@@ -27,7 +27,7 @@ class Archives extends Component {
         
         // Show the side search menu only when main search is out of view
         window.addEventListener('scroll', () => {
-            if (window.scrollY > this.refs.title.offsetTop) {
+            if (window.scrollY > this.refs.articles.offsetTop) {
                 this.refs.search.style.display = "block"
             } else {
                 this.refs.search.style.display = "none"
@@ -115,7 +115,7 @@ class Archives extends Component {
             <div className="container">                     
                 
                     
-                <div ref={'title'}>
+                <div>
                     {         
                         this.props.archives[0]
                         ? 
@@ -163,14 +163,14 @@ class Archives extends Component {
                             className="button search__tab" 
                             onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
                         >                                
-                            <span>
+                            <p>
                                 {this.state.showSearch ? '\u2093': '\u203A'}                                                                    
-                            </span>
+                            </p>
                         </button>   
                     </div>  
                 </div>                                         
               
-                <section className={"articles"}>                    
+                <section ref={'articles'} className={"articles"}>                    
                     {         
                         this.props.archives[0]
                         ? this.props.archives[0].slice(1, 100).map(this.renderArchives)

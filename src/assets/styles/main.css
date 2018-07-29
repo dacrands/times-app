@@ -317,16 +317,19 @@ SEARCH
     top: 0;
     right: 1px;
     margin: 0;
+    padding: 8px;
     transform: translateX(102%);
     /* background: rgb(43, 104, 238); */
     box-shadow: 0 1px 2px rgba(0,0,0,0.3);
     border: none;        
     color: #f1f1f1;
-    font-size: 2rem;
+    font-size: 3rem;
+
 }
 
-.search__tab span {
-    font-size: 5rem;
+.search__tab p {
+    /* font-size: 3rem; */
+    margin: 0;
 }
 
 /* ===================
@@ -351,15 +354,16 @@ POPULAR
 
 
 .loading {
+    position: relative;
     text-align: center;
-    padding-top: 2em;
+    /* padding-top: 2em; */
 }
 
 .spinner {
     position: absolute;
-    top: 50%;
+    top: 100%;
     left: 50%;
-    margin-top: -50px;
+    margin-top: 2em;
     margin-left: -50px;
   /*   background: #000; */
     height: 100px;
@@ -420,6 +424,12 @@ POPULAR
 @media(max-width: 850px) {
     .header{
         font-size: 1.4rem;
+    }
+}
+
+@media(max-width: 472px) {
+    .articles {
+        grid-template-columns: repeat(auto-fill, minmax(96%, 1fr));
     }
 }
 
