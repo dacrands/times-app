@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin:400,700');
-@import url('https://fonts.googleapis.com/css?family=Fanwood+Text');
+// @import url('https://fonts.googleapis.com/css?family=Fanwood+Text');
 
 body {
     margin: 0;
@@ -46,8 +46,9 @@ body {
     padding: 8px;
     border: none;
     border-radius: 5px;
-    background: rgb(76, 133, 255);
-    background: linear-gradient(to bottom, rgb(104, 151, 253), rgb(33, 100, 247));
+    
+    background: rgb(62, 123, 255);
+    // background: linear-gradient(to bottom, rgb(104, 151, 253), rgb(33, 100, 247));
     color: #f9f9f9;    
     transition: all 200ms ease-in;
 }
@@ -55,6 +56,7 @@ body {
 .button:hover {
     cursor: pointer;
     background: linear-gradient(to bottom, rgb(90, 139, 247), rgb(14, 88, 248));
+    background: rgb(57, 99, 190);
 }
 
 
@@ -114,7 +116,7 @@ NAV
 }
 .nav__list .nav__list-item .active {
      /* outline: 3px solid purple; */
-     background: rgb(43, 104, 238);
+     background: rgb(62, 123, 255);
      color: #f1f1f1;
  }
 
@@ -128,40 +130,40 @@ NAV
  }
 
 
-/* ===================
-ARTICLES
+// /* ===================
+// ARTICLES
 
-Provides a responsive grid
-for the Archives and Popular
-components
-=================== */
+// Provides a responsive grid
+// for the Archives and Popular
+// components
+// =================== */
 
 .articles {
-    /* outline: 3px dashed red; */
+    // /* outline: 3px dashed red; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 30px;
 }
 
 
- /* ===================
-HEADER
-=================== */
+//  /* ===================
+// HEADER
+// =================== */
 
 .header {
     padding: 1rem;    
     font-size: 2rem;    
-    font-family: 'Fanwood Text', serif; 
+    // font-family: 'Fanwood Text', serif; 
     text-align: center;    
 }
 
 
-/* ===================
-CONTAINER
-=================== */
+// /* ===================
+// CONTAINER
+// =================== */
 
 .container {
-    /* outline: 4px solid green; */
+    // /* outline: 4px solid green; */
     max-width: 1500px;
     margin: 0 auto;    
     padding: 0 2em;
@@ -169,9 +171,9 @@ CONTAINER
 
 
 
-/* ===================
-BOOKS
-=================== */
+// /* ===================
+// BOOKS
+// =================== */
 .books {
     padding: 2rem;
     display: grid;
@@ -186,17 +188,17 @@ BOOKS
 
 
 .book {    
-    /* outline: 3px dashed rebeccapurple; */
+    // /* outline: 3px dashed rebeccapurple; */
     position: relative;
     border-radius: 5px;
     border: 1px solid #dadada;
-    /* padding: 10px; */
+    // /* padding: 10px; */
     display: flex;
     flex-direction: column;
-    /* text-align: center; */
+    // /* text-align: center; */
     overflow: hidden;
-    /* background: #2e2e2e;
-    color: #dadada;     */
+    // /* background: #2e2e2e;
+    // color: #dadada;     */
     color: #2e2e2e;
 }
 
@@ -217,7 +219,7 @@ BOOKS
 
 
 .book__text {
-    /* outline: 3px solid green; */
+    // /* outline: 3px solid green; */
     padding: 10px;
 }
 
@@ -226,9 +228,9 @@ BOOKS
 }
 
 
-/* ===================
-ARCHIVES
-=================== */
+// /* ===================
+// ARCHIVES
+// =================== */
 
 .container--archives {
     position: relative;
@@ -240,8 +242,8 @@ ARCHIVES
 .archive {
     padding: 2em;
     outline: 1px solid #dadada;
-    /* background: #161616;
-    color: #f5f1f1; */
+    // /* background: #161616;
+    // color: #f5f1f1; */
     display: flex;
     flex-direction: column;
     height: min-content;    
@@ -251,29 +253,29 @@ ARCHIVES
 
 
 
-/* .archive img {
-    width: 175px;
-    height: 175px;
-} */
+// /* .archive img {
+//     width: 175px;
+//     height: 175px;
+// } */
 
 
-/* ===================
-SEARCH
-=================== */
+// /* ===================
+// SEARCH
+// =================== */
 .inputs {
-    /* outline: 3px dashed darkgoldenrod; */
+    // /* outline: 3px dashed darkgoldenrod; */
     display: flex;
     flex-direction: column;
-    /* font-size: 1.2rem; */
+    // /* font-size: 1.2rem; */
 }
 
 
 .inputs__item-label {
     outline: 4px darkslategray;
-    /* background: #000; */
-    /* position: absolute; */
+    // /* background: #000; */
+    // /* position: absolute; */
     transition: all 300ms ease;
-    /* z-index: 2; */
+    // /* z-index: 2; */
 }
 
 
@@ -290,7 +292,7 @@ SEARCH
 }
 
 .search {
-    /* outline: 3px dashed black; */
+    // /* outline: 3px dashed black; */
     display: none;
     position: fixed;
     top: 40vh;
@@ -307,7 +309,7 @@ SEARCH
 
 
 .search__container {
-    /* outline: 4px dashed plum; */
+    // /* outline: 4px dashed plum; */
     padding: 1em;    
 }
 
@@ -319,7 +321,7 @@ SEARCH
     margin: 0;
     padding: 8px;
     transform: translateX(102%);
-    /* background: rgb(43, 104, 238); */
+    // /* background: rgb(43, 104, 238); */
     box-shadow: 0 1px 2px rgba(0,0,0,0.3);
     border: none;        
     color: #f1f1f1;
@@ -328,24 +330,24 @@ SEARCH
 }
 
 .search__tab p {
-    /* font-size: 3rem; */
+    // /* font-size: 3rem; */
     margin: 0;
     fill: rgb(233, 227, 227);
 }
 
-/* ===================
-POPULAR
-=================== */
+// /* ===================
+// POPULAR
+// =================== */
 .popular {
-    /* border: 1px solid #dadada; */
+    // /* border: 1px solid #dadada; */
     padding: 1em;
 }
 .popular__items {
-    /* background-size: contain;
-    background-repeat: no-repeat; */
-    /* padding: 1em; */    
+    // /* background-size: contain;
+    // background-repeat: no-repeat; */
+    // /* padding: 1em; */    
     display: flex;
-    /* align-items: center; */
+    // /* align-items: center; */
 }
 
 .popular__image {
@@ -357,7 +359,7 @@ POPULAR
 .loading {
     position: relative;
     text-align: center;
-    /* padding-top: 2em; */
+    // /* padding-top: 2em; */
 }
 
 .spinner {
@@ -366,21 +368,21 @@ POPULAR
     left: 50%;
     margin-top: 2em;
     margin-left: -50px;
-  /*   background: #000; */
+//   /*   background: #000; */
     height: 100px;
     width: 100px;
     border-radius: 50%;
   }
   
   .disc {
-  /*   background: blue; */
+//   /*   background: blue; */
     position: relative;
     height: 100%;
     width: 100%;
   }
   
   .disc__item {
-  /*   background: blue; */
+//   /*   background: blue; */
     position: absolute;
     top: 0;
     bottom: 0;
@@ -403,7 +405,7 @@ POPULAR
     }
     
     50% {
-  /*     transform: rotate(360deg);  */
+//   /*     transform: rotate(360deg);  */
         margin-top: 17.5px;
         margin-left: 17.5px;
         width: 70px;
