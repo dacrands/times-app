@@ -14,33 +14,22 @@ class Popular extends Component {
 
     renderPopular(post) {
         return (
-            <div>
-
-            
-            <article 
-                className={"popular"}
-                // style={{backgroundImage: `url(${post.media["0"]["media-metadata"]["1"].url})`}}
-            >
-                <a href={post.url}>  
-                                <h3>
-                                    {post.title}
-                                </h3>
-                </a> 
-                <div className="popular__items">
-                    <div className="popular__image">
-                        <img className="fluid thumbnail" src={post.media["0"]["media-metadata"]["1"].url} alt=""/>
-                    </div>                    
-                    <div className="popular__text">
-                                
-                        <p className="lead">{post.published_date}</p>
-                        
-                        <p>                           
-                        {post.abstract}
-                        </p>                  
+            <div>            
+                <article className={"popular"}>                
+                    <div className="popular__items">                        
+                        <div className="popular__image" style={{backgroundImage: `url(${post.media["0"]["media-metadata"]["2"].url})`}}>
+                            {/* <img className="fluid thumbnail" src={post.media["0"]["media-metadata"]["1"].url} alt=""/> */}
+                        </div>                                           
+                        <div className="popular__text">                                
+                            <h3>{post.title}</h3>                            
+                            <p className="lead">{post.published_date}</p>                            
+                            <p>{post.abstract}</p>                  
+                            <a href={post.url}>                                 
+                                view article <span>&rarr;</span>
+                            </a> 
+                        </div>                
                     </div>                
-                </div>
-                
-            </article>            
+                </article>            
             </div>
         );
     }
