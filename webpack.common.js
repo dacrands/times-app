@@ -22,27 +22,35 @@ module.exports = {
   },
   module: {
       rules: [
-          {
-              test: /\.(js|jsx)$/,
-              exclude: [
-                /node_modules/,
-              ],
-              use: ['babel-loader']
-          },
-          {
-            test: /\.(scss|css)$/,
-            use: [
-              process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-              'css-loader',
-              'sass-loader'
-            ]
-          },
+        {
+            test: /\.(js|jsx)$/,
+            exclude: [
+              /node_modules/,
+            ],
+            use: ['babel-loader']
+        },
+        {
+          test: /\.(scss|css)$/,
+          use: [
+            process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader'
+          ]
+        },
 
-          {
-            test: /\.(png|jpg|gif)$/,
-            use: [
-              'file-loader'
-            ]
+        {
+          test: /\.(png|jpg|gif)$/,
+          exclude: /bgs/,
+          use: [
+            'file-loader'
+          ]
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          include: /bgs/,
+          use: [
+            'url-loader'
+          ]
         },
         {
           test: /\.svg$/,

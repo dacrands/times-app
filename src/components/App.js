@@ -9,6 +9,7 @@ import {
 
 import Header from './Header';
 import ScrollToTop from './ScrollToTop';
+import Landing from './Landing';
 import Best from '../containers/Best';
 import Archives from '../containers/Archives';
 import Popular from '../containers/Popular';
@@ -22,7 +23,8 @@ const App = () => (
         <Header />
         <Nav />
         <Switch>
-          <Route exact path="/" component={Best} /> 
+          <Route exact path="/" component={Landing} /> 
+          <Route path="/best" component={Best} /> 
           <Route path="/archives" component={Archives} /> 
           <Route path="/popular" component={Popular} /> 
         </Switch>

@@ -20,7 +20,7 @@ export default class Nav extends Component {
                 <ul className="nav__list">
                     <li className="nav__list-item">
                         <NavLink
-                            exact to="/"
+                            exact to="/best"
                             activeClassName="active"
                         >Best Sellers</NavLink>
                     </li>

@@ -82,9 +82,12 @@ class Archives extends Component {
     render() {
         if (this.props.isError) {
             return (
-                <div>
-                    <p>Sorry! There was an error loading the items</p>
-                    <div className="search__container">
+                <div className={"title container"}>
+                    <h1>Sorry! There was an error loading the items</h1>
+                    <p>I'm sure this is on my end and that you did not
+                        intentionally try to break my app.
+                    </p>
+                    <div className="title__item">
                         <Input 
                             yearStart={this.state.yearStart} 
                             yearEnd={this.state.yearEnd}
@@ -115,9 +118,7 @@ class Archives extends Component {
 
         return(
             <div className="container--archives">            
-            <div className="container">                     
-                
-                    
+            <div className="container">                                                         
                 <div>
                     {         
                         this.props.archives[0]
@@ -131,7 +132,7 @@ class Archives extends Component {
                                     <div className="title__item">
                                         <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
                                     </div>                                                      
-                                    <div className="title__item">
+                                    <nav className="title__item">
                                         <Input 
                                             yearStart={this.state.yearStart} 
                                             yearEnd={this.state.yearEnd}
@@ -139,29 +140,22 @@ class Archives extends Component {
                                             setYearEnd={this.setYearEnd}
                                             showYearEnd={this.state.showYearEnd}
                                         />                
-                                    </div>                                                    
-                                </div>                                
-                                <h2>
-                                {`Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`}                                
-                                </h2>
-                                
+                                    </nav>                                                    
+                                </div>                                                                
                             </header>
                         : 'loading...'
                     }                                                  
-                </div>
-                
-
+                </div>                
                 {/* <Search yearStart={this.state.yearStart} yearEnd={this.state.yearEnd} showSearch={this.state.showSearch} /> */}
                 <div ref={"search"} className={this.state.showSearch ? "search" : "search search--hide"}>                                        
                     <div className="search__container">
-
-                    <Input 
-                        yearStart={this.state.yearStart} 
-                        yearEnd={this.state.yearEnd}
-                        setYearStart={this.setYearStart}
-                        setYearEnd={this.setYearEnd}
-                        showYearEnd={this.state.showYearEnd}
-                    />                       
+                        <Input 
+                            yearStart={this.state.yearStart} 
+                            yearEnd={this.state.yearEnd}
+                            setYearStart={this.setYearStart}
+                            setYearEnd={this.setYearEnd}
+                            showYearEnd={this.state.showYearEnd}
+                        />                       
                         <button 
                             className="button search__tab" 
                             onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
@@ -176,16 +170,30 @@ class Archives extends Component {
                         </button>   
                     </div>  
                 </div>                                         
-              
-                <section ref={'articles'} className={"articles"}>                    
+                </div>
+                <main className={"container"}>
                     {         
                         this.props.archives[0]
-                        ? this.props.archives[0].slice(1, 100).map(this.renderArchives)
-                        // ? const newList = this.shuffle(this.props.archives[0].slice(1, 100)).map(this.renderArchives)
-                        : 'loading...' 
-                    }
-                </section>
-            </div>
+                        ? 
+                            <header>                              
+                                <h2>
+                                {`Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`}                                
+                                </h2>                                
+                            </header>
+                        : 'loading...'
+                    }                
+                    <section ref={'articles'} className={"articles"}>     
+                        
+                        {         
+                            this.props.archives[0]
+                            ? this.props.archives[0].slice(1, 100).map(this.renderArchives)
+                            // ? const newList = this.shuffle(this.props.archives[0].slice(1, 100)).map(this.renderArchives)
+                            : 'loading...' 
+                        }
+                    </section>
+                </main>
+                
+            
             </div>
         );
     }
