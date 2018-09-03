@@ -85,6 +85,17 @@ p {
 }
 
 
+ // /* ===================
+// CONTAINER
+// =================== */
+
+.container {
+    // /* outline: 4px solid green; */
+    max-width: 1200px;
+    margin: 0 auto;    
+    padding: 0 2em;
+}
+
 /* ===================
 NAV
 =================== */
@@ -98,12 +109,12 @@ NAV
 }
 .nav__list {
     /* outline: 3px solid purple; */
-    flex-grow: 1;
-    /* margin: 0; */
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;    
     display: flex;    
     justify-content: space-around;
-    list-style: none;
-    margin: 0;
+    list-style: none;    
     white-space: nowrap;
 }
 
@@ -144,16 +155,7 @@ NAV
  }
 
 
- // /* ===================
-// CONTAINER
-// =================== */
 
-.container {
-    // /* outline: 4px solid green; */
-    max-width: 1200px;
-    margin: 0 auto;    
-    padding: 0 2em;
-}
 
 
 // /* ===================
@@ -166,34 +168,29 @@ NAV
     padding: 0 1em;
     background: rgba(0,0,0,0.8);
     background: linear-gradient(to bottom, rgba(0,0,0,0.7), black);
-    color: $light;
+    background: linear-gradient(to top, rgba(210,210,245,0.7), rgb(255, 255, 255));    
     display: flex;
-    justify-content: center;    
+    
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
-    // flex-flow: wrap;
-    // background: $primary;    
-    h1 {
-        font-size: 250%;
-        margin-bottom: 0;
-    }
+    flex-direction: column;       
 
-    h3 {
-        font-family: $main-font;
+    h1 {
         font-weight: 100;
     }
 
     section {
-        margin: 1rem;
-
+        margin: 1rem;                
         div {
             display: flex;
-            margin: 1rem 0;
-
+            align-items: center;
+            margin: 2rem 0;
         }
     }
 
     svg {
+        height: 80px;
+        width: 80px;
         min-height: 50px;
         min-width: 50px;
         margin: 0;

@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json';
 const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
-const POPULAR_URL = 'http://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
+const POPULAR_URL = 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
 
 
 const API_KEY = process.env.API_KEY;

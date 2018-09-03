@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import CheckBox from '../assets/images/check-box.svg'; 
+import Book from '../assets/images/book.svg'; 
+import Time from '../assets/images/time.svg'; 
 
 export default class Landing extends Component {
 
@@ -18,23 +20,23 @@ export default class Landing extends Component {
       <div>
         <main className="landing">
           <div className="landing--bg"></div>
-          <section>
+          {/* <section>
             <h1>Cool things you can do...</h1>
-          </section>
+          </section> */}
           <section>
             <div>
-              <CheckBox/>
-              <h3>
+              <Book />
+              <h1>
                 Browse the New York Times Best-Sellers, click a book to buy it on Amazon
-              </h3>
+              </h1>
             </div>
             <div>
-              <CheckBox/>
-              <h3>Read articles dating back to the year 1900</h3>
+              <Time />
+              <h1>Read articles dating back to the year 1900</h1>
             </div>
             <div>
-              <CheckBox/>
-              <h3>Check out the news that's causing a buzz</h3>
+              <CheckBox />
+              <h1>Check out the news that's causing a buzz</h1>
             </div>                                    
           </section>          
         </main>        

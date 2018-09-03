@@ -16,7 +16,7 @@ export default class Nav extends Component {
 
     render() {
         return (
-            <nav ref="nav" className="nav  container">
+            <nav ref="nav" className="nav">
                 <ul className="nav__list">
                     <li className="nav__list-item">
                         <NavLink
