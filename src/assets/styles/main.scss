@@ -25,11 +25,6 @@ p {
     font-family: $main-font;
 }
 
-// .thumbnail {
-//     height: 175px;
-//     width: 175px;
-// }
-
 .fluid  {
     max-width: 100%;
     height: auto;
@@ -54,25 +49,22 @@ p {
 
 .lead {
     font-weight: bold;
-    color: $med;
+    // color: $med;
 }
 
-.button {
-    /* border: 3px solid rgb(0, 81, 255); */
+.button {    
     margin: 8px 0;
     padding: 8px;
     border: none;
     border-radius: 5px;    
     background: $primary-light;
-    // background: linear-gradient(to bottom, rgb(104, 151, 253), rgb(33, 100, 247));
     color: #f9f9f9;    
     transition: all 200ms ease-in;
 }
 
 .button:hover {
-    cursor: pointer;
-    background: linear-gradient(to bottom, rgb(90, 139, 247), rgb(14, 88, 248));
-    background: rgb(57, 99, 190);
+    cursor: pointer;    
+    background: $primary-dark;
 }
 
 
@@ -111,6 +103,7 @@ NAV
     display: flex;
     overflow-x: auto;    
 }
+
 .nav__list {
     /* outline: 3px solid purple; */
     margin: 0;
@@ -125,8 +118,11 @@ NAV
 
 
 .nav__list-item a {
-    padding: 0.5em 1em;
-    
+    // padding: 0em 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    // margin-bottom: 1rem;
 }
 
 .nav__list a,
@@ -136,27 +132,28 @@ NAV
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: bold;
-    color: $primary;
-    /* color: #2e2e2e; */
+    color: $dark;
+    transition: all 200ms ease;
+    padding-bottom: 0.5rem; 
+    &:hover {
+        // border-bottom: 3px solid $primary-light;            
+        color: $primary-light;
+    }
 }
 
-.nav__list a:hover {
-    color: #222;
-}
 .nav__list .nav__list-item .active {
-     /* outline: 3px solid purple; */
-     background: $primary-light;
-     color: #f1f1f1;
+    // border-bottom: 3px solid $primary-light;
+    // padding-bottom: 0;
+    color: $primary-light;    
  }
 
-
- .nav--sticky {
-     position: fixed;
-     top: 0;    
-     left: 0;
-     right: 0;
-     z-index: 9;
- }
+.nav--sticky {
+    position: fixed;
+    top: 0;    
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
 
 
 
@@ -166,18 +163,17 @@ NAV
 // LANDING
 // =================== */
 .landing {
-    position: relative;
-    // outline: 4px dashed red;    
+    // outline: 4px dashed red;   
+    position: relative;     
     min-height: 65vh;
-    padding: 0 1em;
+    padding: 0 1em;    
+    display: flex;    
+    flex-direction: column;           
+    align-items: center;    
+    justify-content: space-around;
     background: rgba(0,0,0,0.8);
     background: linear-gradient(to bottom, rgba(0,0,0,0.7), black);
     background: linear-gradient(to top, rgba(210,210,245,0.7), rgb(255, 255, 255));    
-    display: flex;
-    
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;       
 
     h1 {
         font-weight: 100;
@@ -185,6 +181,7 @@ NAV
 
     section {
         margin: 1rem;                
+
         div {
             display: flex;
             align-items: center;
@@ -212,8 +209,7 @@ NAV
     bottom: 0;
     z-index: -2;
     background-image: url('../images/backgrounds/nyt-bg.jpg');
-    background-position: center;
-    // background-size: contain;
+    background-position: center;    
     background-repeat: no-repeat;
 
 }
@@ -229,10 +225,9 @@ NAV
 
 .articles {
     // /* outline: 3px dashed red; */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    display: grid;    
     grid-gap: 30px;
-    // padding: 1em;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));    
 }
 
 
@@ -242,23 +237,31 @@ NAV
 
 .header {
     padding: 2rem 1rem;    
-    font-size: 2rem;   
-    // margin-bottom: 1.45rem; 
-    // font-family: 'Fanwood Text', serif; 
     text-align: center;    
-    // background: rgb(38, 38, 39);
-    // color: #dadada;
+    font-size: 2rem;    
+    transition: all 200ms ease;
+    // background: $dark;           
 }
 
-.header--navlink {
-    text-decoration: none;    
+.header--navlink {       
     color: $dark;
+    text-decoration: none; 
     transition: all 200ms ease;
+    
     &:hover {
-        color: $primary;
+        color: $primary-light;
     }
 }
 
+.active .header {
+    color: $light;
+    background: $dark;
+    transition: all 200ms ease;
+
+    &:hover {
+        color: $primary-light;
+    }
+}
 
 
 
@@ -267,9 +270,9 @@ NAV
 // =================== */
 .books {
     padding: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: grid;    
     grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
 .books a {
@@ -279,18 +282,14 @@ NAV
 
 
 .book {    
-    // /* outline: 3px dashed rebeccapurple; */
+    // /* outline: 3px dashed rebeccapurple; */    
     position: relative;
-    border-radius: 5px;
-    border: 1px solid #dadada;
-    // /* padding: 10px; */
+    overflow: hidden;    
     display: flex;
-    flex-direction: column;
-    // /* text-align: center; */
-    overflow: hidden;
-    // /* background: #2e2e2e;
-    // color: #dadada;     */
+    flex-direction: column;            
     color: #2e2e2e;
+    border-radius: 5px;
+    border: 1px solid #dadada;    
 }
 
 .book:hover .overlay {
@@ -322,32 +321,15 @@ NAV
 // /* ===================
 // ARCHIVES
 // =================== */
-
-// .container--archives {
-//     position: relative;
-//     overflow-x: hidden;
-// }
-
-
-
 .archive {
     padding: 2em;
-    outline: 1px solid #dadada;
-    // /* background: #161616;
-    // color: #f5f1f1; */
+    // outline: 1px solid $med;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     height: min-content;    
 }
-
-
-
-
-
-// /* .archive img {
-//     width: 175px;
-//     height: 175px;
-// } */
 
 
 // /* ===================
@@ -555,6 +537,11 @@ NAV
 }
 
 @media(max-width: 472px) {
+
+    .header {
+        font-size: 1rem;
+        padding: 2em 0;
+    }
     .articles {
         grid-template-columns: repeat(auto-fill, minmax(96%, 1fr));
     }
