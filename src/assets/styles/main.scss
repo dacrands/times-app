@@ -118,10 +118,11 @@ NAV
 
 
 .nav__list-item a {
-    // padding: 0em 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    margin-top: 1rem;
+    padding: 1rem;
+    padding-bottom: 0.25rem;
+    // margin-left: 0.5rem;
+    // margin-right: 0.5rem;
+    // margin-top: 1rem;
     // margin-bottom: 1rem;
 }
 
@@ -134,17 +135,17 @@ NAV
     font-weight: bold;
     color: $dark;
     transition: all 200ms ease;
-    padding-bottom: 0.5rem; 
+    border-bottom: 3px solid transparent;                 
     &:hover {
-        // border-bottom: 3px solid $primary-light;            
-        color: $primary-light;
+        border-bottom: 3px solid $med;                    
+        color: $dark;        
     }
 }
 
 .nav__list .nav__list-item .active {
-    // border-bottom: 3px solid $primary-light;
+    border-bottom: 3px solid $med;    
     // padding-bottom: 0;
-    color: $primary-light;    
+    // color: $primary-light;            
  }
 
 .nav--sticky {
@@ -153,6 +154,7 @@ NAV
     left: 0;
     right: 0;
     z-index: 9;
+    // border-bottom: 1px solid #dadada;
 }
 
 
@@ -240,7 +242,10 @@ NAV
     text-align: center;    
     font-size: 2rem;    
     transition: all 200ms ease;
-    // background: $dark;           
+    &:hover {
+        // background: $dark;          
+        color: $med;
+    }  
 }
 
 .header--navlink {       
@@ -248,19 +253,13 @@ NAV
     text-decoration: none; 
     transition: all 200ms ease;
     
-    &:hover {
-        color: $primary-light;
-    }
+    
 }
 
 .active .header {
-    color: $light;
-    background: $dark;
-    transition: all 200ms ease;
-
-    &:hover {
-        color: $primary-light;
-    }
+    transition: all 200ms ease;    
+    color: $light;    
+    background: $dark; 
 }
 
 
@@ -368,7 +367,7 @@ NAV
     // /* outline: 3px dashed black; */
     display: none;
     position: fixed;
-    top: 40vh;
+    top: 10vh;
     left: 0;
     background: #eee;
     box-shadow: 0 3px 6px rgba(0,0,0,0.3);

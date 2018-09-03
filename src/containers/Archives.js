@@ -66,12 +66,7 @@ class Archives extends Component {
                     <p className="lead">{new Date(post.pub_date).toDateString()}</p>
                 </div>                
                 <div className="archive__content">
-                    <p>
-                        <img
-                            className="img"
-                            src={post.multimedia[0] ? `https://nyt.com/${post.multimedia[0].url}` : ""}
-                            alt={`${post.headline.main} image`}
-                        />                
+                    <p>       
                         {post.lead_paragraph}
                     </p>           
                 </div>                
