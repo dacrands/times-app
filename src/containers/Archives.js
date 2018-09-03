@@ -30,11 +30,13 @@ class Archives extends Component {
         
         // Show the side search menu only when main search is out of view
         window.addEventListener('scroll', () => {
-            if (window.scrollY > this.refs.articles.offsetTop) {
-                this.refs.search.style.display = "block"
-            } else {
-                this.refs.search.style.display = "none"
-            }
+            if (this.refs.articles) {
+                if (window.scrollY > this.refs.articles.offsetTop) {
+                    this.refs.search.style.display = "block"
+                } else {
+                    this.refs.search.style.display = "none"
+                }
+            }            
         })
     }
 
@@ -119,9 +121,9 @@ class Archives extends Component {
                         this.props.archives[0]
                         ? 
                             <header>
-                                <h1>
+                                <h2>
                                     {`Current Year Range: ${this.state.yearStart} - ${this.state.yearEnd}`}
-                                </h1>
+                                </h2>
                                 {/* <hr/>               */}
                                 <div className="title">
                                     <div className="title__item">

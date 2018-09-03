@@ -16,7 +16,10 @@ export default class Nav extends Component {
 
     render() {
         return (
+            <div className="container">
             <nav ref="nav" className="nav">
+            
+            
                 <ul className="nav__list">
                     <li className="nav__list-item">
                         <NavLink
@@ -39,6 +42,7 @@ export default class Nav extends Component {
                     
                 </ul>
             </nav>
+            </div>
         );
     }
 }

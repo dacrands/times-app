@@ -6,16 +6,13 @@ import { bindActionCreators } from 'redux';
 class Popular extends Component {
 
     componentDidMount() {
-        this.props.fetchPopular();
-        setTimeout(() => {
-            console.log(this.props.popular[0]);
-        }, 3500);        
+        this.props.fetchPopular();    
     }
 
     renderPopular(post) {
         return (
-            <div>            
-                <article className={"popular"}>                
+            <div key={post.title.replace(/\s/g, '')}>            
+                <article className={"popular"} >                
                     <div className="popular__items">                        
                         <div className="popular__image" style={{backgroundImage: `url(${post.media["0"]["media-metadata"]["2"].url})`}}>
                             {/* <img className="fluid thumbnail" src={post.media["0"]["media-metadata"]["1"].url} alt=""/> */}
@@ -36,8 +33,10 @@ class Popular extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h1>Most Popular Articles for {new Date().toDateString()}    </h1>
+            <div className="container">'
+                <header>
+                    <h2>Most Popular Articles for {new Date().toDateString()}</h2>
+                </header>                
                 <section className={"articles"}>                    
                     {         
                         this.props.popular[0]

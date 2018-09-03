@@ -21,22 +21,22 @@ export default class Landing extends Component {
         <main className="landing">
           <div className="landing--bg"></div>
           {/* <section>
-            <h1>Cool things you can do...</h1>
+            <h3>Cool things you can do...</h3>
           </section> */}
           <section>
             <div>
               <Book />
-              <h1>
-                Browse the New York Times Best-Sellers, click a book to buy it on Amazon
-              </h1>
+              <h3>
+                Browse the New York Times Best-Sellers. <br/> Click a book to buy it on Amazon.
+              </h3>
             </div>
             <div>
               <Time />
-              <h1>Read articles dating back to the year 1900</h1>
+              <h3>Read articles dating back to the year 1900.</h3>
             </div>
             <div>
               <CheckBox />
-              <h1>Check out the news that's causing a buzz</h1>
+              <h3>Check out the news that's causing a buzz.</h3>
             </div>                                    
           </section>          
         </main>        
