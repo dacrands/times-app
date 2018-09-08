@@ -29,6 +29,25 @@ Reading old news articles is a very interesting experience to say the least. I w
 ## Getting started 
 You will need to have NPM installed and a New York Times API key to run this app.
 
+### Configure API key
+Create an environment variable `API_KEY`
+
+```powershell
+PS C:\> $env:API_KEY="<KEY>"
+```
+
+### Development
+```powershell
+PS C:\> npm run dev
+```
+
+### Production
+Create and environment variable `NODE_ENV` to `"production"` and run `npm start`
+
+```powershell
+PS C:\> $env:NODE_ENV="production"
+PS C:\> npm start
+```
 
 
 
