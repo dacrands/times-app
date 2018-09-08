@@ -8,6 +8,7 @@ View the NYT Best-Sellers, browse popular articles, search archives dating back 
 ## Table of Contents
 - [Background](#background)
 - [Getting Started](#getStarted)
+- [How it works](#how)
 
 <a name="background"></a>
 ## Background
@@ -27,28 +28,34 @@ Reading old news articles is a very interesting experience to say the least. I w
 
 <a name="getStarted"></a>
 ## Getting started 
-You will need to have NPM installed and a New York Times API key to run this app.
+You will need to have Node installed and a New York Times API key to run this app.
 
 ### Configure API key
-Create an environment variable `API_KEY`
+Set an environment variable `API_KEY` to your API key.
 
 ```powershell
-PS C:\> $env:API_KEY="<KEY>"
+$env:API_KEY="<KEY>"
 ```
 
 ### Development
 ```powershell
-PS C:\> npm run dev
+npm run dev
 ```
 
 ### Production
-Create and environment variable `NODE_ENV` to `"production"` and run `npm start`
+Set an environment variable `NODE_ENV` to `"production"` and run `npm start`.
 
 ```powershell
-PS C:\> $env:NODE_ENV="production"
-PS C:\> npm start
+$env:NODE_ENV="production"
+```
+```powershell
+npm start
 ```
 
+<a name="how"></a>
+## How it works
+
+This app uses React and Redux, where each Redux action creator is a fetch request to the API. Additional action creators were add to handle loading (i.e., presenting a load screen while the request resolves) and error handling for bad requests.
 
 
 ## TODO
