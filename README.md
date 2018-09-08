@@ -55,7 +55,7 @@ npm start
 <a name="how"></a>
 ## How it works
 
-This app uses React and Redux, where each Redux action creator is a fetch request to the API. Additional action creators were add to handle loading (i.e., presenting a load screen while the request resolves) and error handling for bad requests.
+This app uses React and Redux, where each Redux action creator is a fetch request to the API. Additional action creators handle loading (i.e., presenting a load screen while the request resolves) and error handling for bad requests.
 
 
 ## TODO
