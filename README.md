@@ -13,10 +13,11 @@ View the NYT Best-Sellers, browse popular articles, search archives dating back 
 ## Background
 Once I found out about the wonderful world of APIs, I knew right away that I wanted to work with news data.
 
-I don't follow the news at all, but news data, particularly news articles, have a simple data-structure of title, text, and perhaps a few images. This was an ideal schema for me, as I wanted data that would be easy to build a UI around. 
+I don't follow the news at all, but news data, particularly news articles, have a simple data-structure of a title, text, and perhaps a few images. This was an ideal schema for me, as I wanted data that would be easy to build a UI around. 
 
 ### Why the New York Times?
-No reason in-particular, though I must say I am quite happy with the decision.
+The primary reason I went with the New York Times API was to access their archives. These archives provide access to **a lot** of data.
+
 
 The heart of this app is the archives search:
 > The Archive API provides lists of NYT articles by month going back to 1851. Simply pass in the year and month you want and it returns a JSON object with all articles for that month.
