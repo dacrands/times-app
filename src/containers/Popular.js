@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPopular } from '../actions/index';
+import { fetchPopular, fetchAuth } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Popular extends Component {
 
     componentDidMount() {
         this.props.fetchPopular();    
+        console.log(this.props.auth);
     }
 
     renderPopular(post) {
@@ -50,11 +51,11 @@ class Popular extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchPopular }, dispatch);    
+    return bindActionCreators({ fetchPopular, fetchAuth }, dispatch);    
 }
 
-function mapStateToProps({ popular }) {
-    return { popular };
+function mapStateToProps({ popular, auth }) {
+    return { popular, auth };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popular);

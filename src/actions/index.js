@@ -1,25 +1,57 @@
 const fetch = require('node-fetch');
 
-
-const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json';
-const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
-const POPULAR_URL = 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
+const BASE_URL = 'http://192.168.0.108:5000';
 
 
-const API_KEY = process.env.API_KEY;
 
-const historyUrl = `${HISTORY_URL}?api-key=${API_KEY}`;
-const bestUrl = `${BEST_URL}?api-key=${API_KEY}`;
-const popularUrl = `${POPULAR_URL}?api-key=${API_KEY}`;
 
+const LOGIN_URL = `${BASE_URL}/login`;
+const ARCHIVES_URL = `${BASE_URL}/api/archives`;
+const POPULAR_URL = `${BASE_URL}/api/popular`;
+const BEST_URL = `${BASE_URL}/api/best`;
+
+// const ARCHIVES_URL = `${BASE_URL}/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
+// const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json';
+// const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
+// const POPULAR_URL = 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
+
+
+export const FETCH_AUTH = 'FETCH_AUTH';
+
+export const FETCH_ERROR = 'FETCH_ERROR';
+export const FETCH_LOADING = 'FETCH_LOADING';
 
 export const FETCH_HISTORY = 'FETCH_HISTORY';
 export const FETCH_BEST = 'FETCH_BEST';
 export const FETCH_ARCHIVES = 'FETCH_ARCHIVES';
 export const FETCH_POPULAR = 'FETCH_POPULAR';
-export const FETCH_ERROR = 'FETCH_ERROR';
-export const FETCH_LOADING = 'FETCH_LOADING';
 
+
+
+
+// -------------------------
+// Auth actions
+// -------------------------
+var token;
+export function fetchAuth(formData) {
+    return fetch(LOGIN_URL, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json; charset=utf-8"
+      },
+      body: formData
+    }).then(res => {
+      return res.json();
+    }).then(myJson => {
+        token = myJson['access_token'];
+        return  {
+            type: 'FETCH_AUTH',
+            auth: myJson['access_token']
+        }  
+    }).catch(e => {
+      console.log('it went wrong \r', e)
+    })    
+}
 // -------------------------
 // Error and loading actions
 // -------------------------
@@ -39,10 +71,15 @@ export function fetchLoading(bool) {
 
 
 // -------------------------
-// Fetches
+// Auth actions
+// -------------------------
+
+
+// -------------------------
+// API actions
 // -------------------------
 export function fetchHistory() {
-    return fetch(historyUrl)
+    return fetch(HISTORY_URL)
     .then((response) => {
         return response.json();
     })
@@ -56,7 +93,9 @@ export function fetchHistory() {
 
 
 export function fetchPopular() {
-    return fetch(popularUrl)
+    return fetch(POPULAR_URL,{
+      headers: { 'Authorization' : `Bearer ${token}` },
+    })
     .then((response) => {
         return response.json();
     })
@@ -71,7 +110,7 @@ export function fetchPopular() {
 
 
 export function fetchBest() {
-    return fetch(bestUrl)
+    return fetch(BEST_URL)
         .then((response) => {
             return response.json();
         })
@@ -91,12 +130,12 @@ export function fetchArchivesSuccess(request) {
 }
 
 export function fetchArchives(min, max) {
-    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
-    const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
+    // const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
+    // const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;    
     return dispatch => {
         dispatch(fetchLoading(true));        
         dispatch(fetchError(false));        
-        return fetch(archivesUrl)
+        return fetch(ARCHIVES_URL)
             .then((response) => {                
                 return response.json();
             })

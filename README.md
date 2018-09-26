@@ -29,7 +29,7 @@ The heart of this app is the archives search. Users are able to set a year range
 
 Considering the immense number of articles delivered with each request, I needed to trim the data without only presenting the first articles of the month. In other words, the articles are ordered chronologically in the array, so taking a slice of say, fifty, would show articles from one day that month.
 
-To fix this problem I added a helper function that randomizes the array. Then a slice of fifty is taken from the shuffled array to be mapped over in our container component.
+To fix this problem I added a helper function that randomizes the original array from the request. Then a slice of fifty is taken from the shuffled array to be mapped over in the container component.
 
 
 Reading old news articles is a very interesting experience to say the least. I won't wax poetic too much here, but I feel it's the closest thing we have to a time machine. 
@@ -38,6 +38,8 @@ Reading old news articles is a very interesting experience to say the least. I w
 View the non-fiction best-sellers. Hover over a book to read its abstract. Click on a book to purchase a book on Amazon.
 
 The best sellers page was more for UI/UX practice than anything else. I figured that displaying books would be a good chance to work on my grid and image skills, and I think it adds some needed visual interest to an otherwise very text-heavy website. 
+
+
 
 
 <a name="getStarted"></a>
@@ -70,6 +72,7 @@ npm start
 ## How it works
 
 This app uses React and Redux, where each Redux action creator is a fetch request to the API. Additional action creators act as middleware to handle loading (i.e., presenting a load screen while the request resolves) and error handling for bad requests.
+
 
 
 ## TODO

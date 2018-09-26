@@ -13,6 +13,7 @@ import Landing from './Landing';
 import Best from '../containers/Best';
 import Archives from '../containers/Archives';
 import Popular from '../containers/Popular';
+import Login from './Login';
 
 import Nav from '../components/Nav';
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/best" component={Best} /> 
           <Route path="/archives" component={Archives} /> 
           <Route path="/popular" component={Popular} /> 
+          <Route path="/login" component={Login} /> 
         </Switch>
       </div>
     </ScrollToTop>
