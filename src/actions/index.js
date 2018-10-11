@@ -1,12 +1,13 @@
 const fetch = require('node-fetch');
 
-const BASE_URL = 'http://192.168.0.108:5000';
+const BASE_URL = 'http://127.0.0.1:5000';
 
 
 
 
 const LOGIN_URL = `${BASE_URL}/login`;
 const ARCHIVES_URL = `${BASE_URL}/api/archives`;
+// /${getRandomYear(min, max)}/${getRandomMonth()}
 const POPULAR_URL = `${BASE_URL}/api/popular`;
 const BEST_URL = `${BASE_URL}/api/best`;
 
@@ -110,15 +111,17 @@ export function fetchPopular() {
 
 
 export function fetchBest() {
-    return fetch(BEST_URL)
-        .then((response) => {
+    return fetch(BEST_URL, {
+        headers: { 'Authorization' : `Bearer ${token}` },
+    })
+    .then((response) => {
             return response.json();
-        })
-        .then((request) => {
-            return {
-                type: FETCH_BEST,
-                payload: request 
-            }
+    })
+    .then((request) => {
+        return {
+            type: FETCH_BEST,
+            payload: request 
+        }
     });
 }
 
@@ -135,13 +138,15 @@ export function fetchArchives(min, max) {
     return dispatch => {
         dispatch(fetchLoading(true));        
         dispatch(fetchError(false));        
-        return fetch(ARCHIVES_URL)
-            .then((response) => {                
-                return response.json();
-            })
-            .then((request) => {
-                dispatch(fetchLoading(false))
-                return dispatch(fetchArchivesSuccess(request))            
+        return fetch(`${ARCHIVES_URL}/${getRandomYear(min, max)}/${getRandomMonth()}`, {
+            headers: { 'Authorization' : `Bearer ${token}` },
+        })
+        .then((response) => {                
+            return response.json();
+        })
+        .then((request) => {
+            dispatch(fetchLoading(false))
+            return dispatch(fetchArchivesSuccess(request))            
         }).catch(e => dispatch(fetchError(true)));
     }    
 }
