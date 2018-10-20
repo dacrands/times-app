@@ -45,6 +45,12 @@ export default class Nav extends Component {
                             activeClassName="active"
                         >Login</NavLink>
                     </li>
+                    <li className="nav__list-item">
+                        <NavLink
+                            to="/register"
+                            activeClassName="active"
+                        >Register</NavLink>
+                    </li>
                     
                 </ul>
             </nav>

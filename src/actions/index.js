@@ -4,24 +4,17 @@ const BASE_URL = 'http://127.0.0.1:5000';
 
 
 
+export const REQUEST_URL = `${BASE_URL}/register`;
 
 const LOGIN_URL = `${BASE_URL}/login`;
 const ARCHIVES_URL = `${BASE_URL}/api/archives`;
-// /${getRandomYear(min, max)}/${getRandomMonth()}
 const POPULAR_URL = `${BASE_URL}/api/popular`;
 const BEST_URL = `${BASE_URL}/api/best`;
 
-// const ARCHIVES_URL = `${BASE_URL}/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
-// const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json';
-// const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
-// const POPULAR_URL = 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
-
-
+export const SET_AUTH = 'SET_AUTH';
 export const FETCH_AUTH = 'FETCH_AUTH';
-
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const FETCH_LOADING = 'FETCH_LOADING';
-
 export const FETCH_HISTORY = 'FETCH_HISTORY';
 export const FETCH_BEST = 'FETCH_BEST';
 export const FETCH_ARCHIVES = 'FETCH_ARCHIVES';
@@ -45,14 +38,16 @@ export function fetchAuth(formData) {
       return res.json();
     }).then(myJson => {
         token = myJson['access_token'];
+        localStorage.setItem('token', token)
         return  {
             type: 'FETCH_AUTH',
-            auth: myJson['access_token']
+            auth: window.localStorage.token
         }  
     }).catch(e => {
       console.log('it went wrong \r', e)
     })    
 }
+
 // -------------------------
 // Error and loading actions
 // -------------------------
@@ -69,12 +64,6 @@ export function fetchLoading(bool) {
         isLoading: bool
     };
 }
-
-
-// -------------------------
-// Auth actions
-// -------------------------
-
 
 // -------------------------
 // API actions
@@ -95,13 +84,12 @@ export function fetchHistory() {
 
 export function fetchPopular() {
     return fetch(POPULAR_URL,{
-      headers: { 'Authorization' : `Bearer ${token}` },
+      headers: { 'Authorization' : `Bearer ${window.localStorage.token}` },
     })
     .then((response) => {
         return response.json();
     })
-    .then((request) => {
-        console.log(request);       
+    .then((request) => {    
         return {
             type: FETCH_POPULAR,
             payload: request 
@@ -112,7 +100,7 @@ export function fetchPopular() {
 
 export function fetchBest() {
     return fetch(BEST_URL, {
-        headers: { 'Authorization' : `Bearer ${token}` },
+        headers: { 'Authorization' : `Bearer ${window.localStorage.token}` },
     })
     .then((response) => {
             return response.json();
@@ -133,13 +121,11 @@ export function fetchArchivesSuccess(request) {
 }
 
 export function fetchArchives(min, max) {
-    // const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
-    // const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;    
     return dispatch => {
         dispatch(fetchLoading(true));        
         dispatch(fetchError(false));        
         return fetch(`${ARCHIVES_URL}/${getRandomYear(min, max)}/${getRandomMonth()}`, {
-            headers: { 'Authorization' : `Bearer ${token}` },
+            headers: { 'Authorization' : `Bearer ${window.localStorage.token}` },
         })
         .then((response) => {                
             return response.json();
